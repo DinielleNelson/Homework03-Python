@@ -9,8 +9,6 @@ def PyBank(test):
 #The total number of months included in the dataset
 	monthCount = sum(1 for line in test)
 
-	print(monthCount)
-
 #The net total amount of "Profit/Losses" over the entire period
 
 #The average of the changes in "Profit/Losses" over the entire period
@@ -20,8 +18,9 @@ def PyBank(test):
 #The greatest decrease in losses (date and amount) over the entire period
 
 
-#print("Financial Analysis")
-#print(---------------------)
+	print("Financial Analysis")
+	print("---------------------")
+	print(f'Total Months: {monthCount}')
 
 with open (csvpath,'r') as csvfile:
 	csvreader = csv.reader(csvpath,delimiter=",")
