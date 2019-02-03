@@ -45,6 +45,7 @@ def pybank(test):
 
 
 
+
 	print("Financial Analysis")
 	print("---------------------")
 	print(f'Total Months: {month_count}')
@@ -52,6 +53,20 @@ def pybank(test):
 	print(f'Average Change: ${net_avg}')
 	print(f'Greatest Increase in Profits: {month_max} (${diff_max})')
 	print(f'Greatest Decrease in Profits: {month_min} (${diff_min})')
+
+	#####
+### print values to .csv
+	outF = open("pyBank.txt", "w")
+	outF.write(f'Total Months: {month_count}\n')
+	outF.write("Financial Analysis\n")
+	outF.write("---------------------\n")
+	outF.write(f'Total Months: {month_count}\n')
+	outF.write(f'Net Total: ${net_total}\n')
+	outF.write(f'Average Change: ${net_avg}\n')
+	outF.write(f'Greatest Increase in Profits: {month_max} (${diff_max})\n')
+	outF.write(f'Greatest Decrease in Profits: {month_min} (${diff_min})\n')
+		
+#####
 
 with open (csv_path,'r') as csv_file:
 	csv_reader = csv.reader(csv_file,delimiter=",")
