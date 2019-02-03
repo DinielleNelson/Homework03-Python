@@ -10,9 +10,9 @@ def pybank(test):
 	net_total = 0
 	net_last = 867884
 	net_list = []
-	net_max = 867884
+	diff_max = 0
 	month_max = 1/1/2010
-	net_min = 867884
+	diff_min = 0
 	month_min = 1/1/2010
 
 	for row in test:
@@ -30,17 +30,19 @@ def pybank(test):
 		net_last = net_cur
 		net_list.append(net_diff)
 		net_avg = sum(net_list)/(month_count)
+		#print(f'{row[0]} :: {row[1]} :: {net_diff}')
 
-		#for row in net_list:
-			#The greatest increase in profits (date and amount) over the entire period
-		#	if int(row[1]) > net_max:
-		#		month_max = row[0]
-		#		net_max = int(row[1])
+		
+		#The greatest increase in profits (date and amount) over the entire period
+		if int(net_diff) > diff_max:
+				month_max = row[0]
+				diff_max = net_diff
 
-			#The greatest decrease in losses (date and amount) over the entire period
-		#	if int(row[1]) < net_min:
-		#		month_min = row[0]
-		#		net_min = int(row[1])
+		#The greatest decrease in losses (date and amount) over the entire period
+		if int(net_diff) < diff_min:
+			month_min = row[0]
+			diff_min = net_diff
+
 
 
 	print("Financial Analysis")
@@ -48,11 +50,14 @@ def pybank(test):
 	print(f'Total Months: {month_count}')
 	print(f'Net Total: ${net_total}')
 	print(f'Average Change: ${net_avg}')
-#	print(f'Greatest Increase in Profits: {month_max} (${net_max})')
-#	print(f'Greatest Decrease in Profits: {month_min} (${net_min})')
+	print(f'Greatest Increase in Profits: {month_max} (${diff_max})')
+	print(f'Greatest Decrease in Profits: {month_min} (${diff_min})')
 
 with open (csv_path,'r') as csv_file:
 	csv_reader = csv.reader(csv_file,delimiter=",")
 	csv_header = next(csv_reader)
 
 	pybank(csv_reader)
+
+
+
