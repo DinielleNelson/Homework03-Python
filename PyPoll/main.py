@@ -15,6 +15,7 @@ def pypoll(test):
 	vote_5 = 0
 
 	candidate_list = []
+
 	
 	#The total number of votes cast
 	for row in test:
@@ -37,20 +38,26 @@ def pypoll(test):
 		#	vote_4 += 1
 		#elif row[2]==candidate_list[5]:
 		#	vote_5 += 1
-
-	# The percentage of votes each candidate won
-		perc_0 = vote_0/total_votes * 100
-		perc_1 = vote_1/total_votes * 100
-		perc_2 = vote_2/total_votes * 100
-		perc_3 = vote_3/total_votes * 100
-		#perc_0 = vote_0/total_votes * 100
-		#perc_0 = vote_0/total_votes * 100
-
-	# The winner of the election based on popular vote.
 	
+	
+	# The percentage of votes each candidate won
+	perc_0 = vote_0/total_votes * 100
+	perc_1 = vote_1/total_votes * 100
+	perc_2 = vote_2/total_votes * 100
+	perc_3 = vote_3/total_votes * 100
+	#perc_0 = vote_0/total_votes * 100	
+	#perc_0 = vote_0/total_votes * 100
 
+	vote_list = [vote_0, vote_1, vote_2, vote_3]
 
+	# The winner of the election based on popular vote.	
+	winner_votes = max(vote_list)
 
+	for idx, val in enumerate(vote_list):
+		if val == winner_votes:
+			winner = candidate_list[idx]
+
+	#print to terminal
 	print("Election Results")
 	print("-------------------")
 	print(f'"Total Votes: "{total_votes}')
@@ -63,7 +70,21 @@ def pypoll(test):
 	#print(f'{candidate_list[4]}: {perc_0}% ({vote_0})')
 	#print(f'{candidate_list[5]}: {perc_0}% ({vote_0})')
 	print("-------------------")
-	print("Winner: ")
+	print(f'"Winner: "{winner}')
+
+	#print values to .txt
+	outF = open("pyPoll.txt", "w")
+	outF.write("Election Results\n")
+	outF.write("-------------------\n")
+	outF.write(f'"Total Votes: "{total_votes}\n')
+	outF.write("-------------------\n")
+	outF.write(f'{candidate_list[0]}: {perc_0}% ({vote_0})\n')
+	outF.write(f'{candidate_list[1]}: {perc_1}% ({vote_1})\n')
+	outF.write(f'{candidate_list[2]}: {perc_2}% ({vote_2})\n')
+	outF.write(f'{candidate_list[3]}: {perc_3}% ({vote_3})\n')
+	outF.write("-------------------\n")
+	outF.write(f'"Winner: "{winner}')
+
 
 
 with open (csv_path, 'r') as csv_file:
