@@ -43,9 +43,6 @@ def pybank(test):
 			month_min = row[0]
 			diff_min = net_diff
 
-
-
-
 	print("Financial Analysis")
 	print("---------------------")
 	print(f'Total Months: {month_count}')
@@ -54,8 +51,7 @@ def pybank(test):
 	print(f'Greatest Increase in Profits: {month_max} (${diff_max})')
 	print(f'Greatest Decrease in Profits: {month_min} (${diff_min})')
 
-	#####
-### print values to .csv
+	#print values to .txt
 	outF = open("pyBank.txt", "w")
 	outF.write(f'Total Months: {month_count}\n')
 	outF.write("Financial Analysis\n")
