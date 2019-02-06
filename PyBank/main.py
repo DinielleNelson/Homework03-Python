@@ -43,26 +43,25 @@ def pybank(test):
 			month_min = row[0]
 			diff_min = net_diff
 
-	print("Financial Analysis")
-	print("---------------------")
-	print(f'Total Months: {month_count}')
-	print(f'Net Total: ${net_total}')
-	print(f'Average Change: ${net_avg}')
-	print(f'Greatest Increase in Profits: {month_max} (${diff_max})')
-	print(f'Greatest Decrease in Profits: {month_min} (${diff_min})')
+
+
+	analysis = f"""
+	Financial Analysis\n
+	---------------------\n
+	Total Months: {month_count}\n
+	Net Total: ${net_total}\n
+	Average Change: ${net_avg}\n
+	Greatest Increase in Profits: {month_max} (${diff_max})\n
+	Greatest Decrease in Profits: {month_min} (${diff_min})
+	"""
+
+	print(analysis)
 
 	#print values to .txt
 	outF = open("pyBank.txt", "w")
-	outF.write(f'Total Months: {month_count}\n')
-	outF.write("Financial Analysis\n")
-	outF.write("---------------------\n")
-	outF.write(f'Total Months: {month_count}\n')
-	outF.write(f'Net Total: ${net_total}\n')
-	outF.write(f'Average Change: ${net_avg}\n')
-	outF.write(f'Greatest Increase in Profits: {month_max} (${diff_max})\n')
-	outF.write(f'Greatest Decrease in Profits: {month_min} (${diff_min})\n')
-		
-#####
+	outF.write(analysis)
+
+
 
 with open (csv_path,'r') as csv_file:
 	csv_reader = csv.reader(csv_file,delimiter=",")
