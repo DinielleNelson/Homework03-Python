@@ -56,7 +56,6 @@ def pybank(test):
 	"""
 
 	print(analysis)
-
 	#print values to .txt
 	outF = open("pyBank.txt", "w")
 	outF.write(analysis)
